@@ -74,13 +74,13 @@ public class Hbase {
 
         for (int i = 0; i < columnFamilies.length; i++) {
             String familyName = columnFamilies[i].getNameAsString(); // 获取列族名
-            if (familyName.equals("article")) { // article列族put数据
+            if (familyName.equals("action")) { // article列族put数据
                 for (int j = 0; j < column1.length; j++) {
                     put.add(Bytes.toBytes(familyName),
                             Bytes.toBytes(column1[j]), Bytes.toBytes(value1[j]));
                 }
             }
-            if (familyName.equals("author")) { // author列族put数据
+            if (familyName.equals("user")) { // author列族put数据
                 for (int j = 0; j < column2.length; j++) {
                     put.add(Bytes.toBytes(familyName),
                             Bytes.toBytes(column2[j]), Bytes.toBytes(value2[j]));
