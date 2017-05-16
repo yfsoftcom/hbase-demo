@@ -306,6 +306,24 @@ public class Hbase {
     }
 
     public static void main(String[] args) throws Exception {
+        // 创建表
+        String tableName = "logs";
+        String[] family = { "action", "user" };
+        creatTable(tableName, family);
+        System.out.println("Create Table!");
+
+        String[] column1 = { "tag", "at" };
+        String[] value1 = {
+                "login",
+                System.currenttimemillis()};
+        String[] column2 = { "name" };
+        String[] value2 = { "tester"};
+
+        addData("rowkey1", "logs", column1, value1, column2, value2);
+        
+    }
+
+    public static void test(String[] args) throws Exception {
 
         // 创建表
         String tableName = "blog2";
