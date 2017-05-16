@@ -308,21 +308,24 @@ public class Hbase {
     public static void main(String[] args) throws Exception {
         // 创建表
         String tableName = "logs";
-        long now = System.currentTimeMillis();
+        long start = System.currentTimeMillis();
         String[] family = { "action", "user" };
         creatTable(tableName, family);
         System.out.println("Create Table!");
         String[] column1 = { "tag", "at" };
         String[] column2 = { "name" };
 
-        System.out.println("Start @ " + now);
+        System.out.println("Start @ " + new java.util.Date(start).toString());
         long max = Long.parseLong(args[0]);
         System.out.println("Counter: " + max);
         for(long i = 10 ; i < max ; i++){
             addData("rowkey" + i, tableName, column1, new String[]{ "login", "No:" + i }, column2, new String[]{ "tester-" + i});
         }
         
-        System.out.println("Finish @ " + System.currentTimeMillis());
+        long end = System.currentTimeMillis();
+        System.out.println("Finish @ " + new java.util.Date(end).toString());
+
+        System.out.println("Total time: " + ((end - start)/1000) + " s");
         
     }
 
