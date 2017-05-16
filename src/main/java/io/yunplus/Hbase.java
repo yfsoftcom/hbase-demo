@@ -312,15 +312,17 @@ public class Hbase {
         String[] family = { "action", "user" };
         creatTable(tableName, family);
         System.out.println("Create Table!");
-
         String[] column1 = { "tag", "at" };
-        String[] value1 = {
-                "login",
-                "" + now};
         String[] column2 = { "name" };
-        String[] value2 = { "tester"};
 
-        addData("rowkey1", "logs", column1, value1, column2, value2);
+        System.out.println("Start @ " + now);
+        long max = Long.parseLong(args[0]);
+        System.out.println("Counter: " + max);
+        for(long i = 10 ; i < max ; i++){
+            addData("rowkey" + i, tableName, column1, { "login", "No:" + i }, column2, { "tester-" + i});
+        }
+        
+        System.out.println("Finish @ " + System.currentTimeMillis());
         
     }
 

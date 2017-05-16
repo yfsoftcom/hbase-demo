@@ -37,7 +37,7 @@
             <configuration>  
               <mainClass>io.yunplus.Hbase</mainClass>  
               <arguments>  
-              <argument>arg0</argument>  
+              <argument>20</argument>  
               <argument>arg1</argument>  
               </arguments>  
             </configuration>  
