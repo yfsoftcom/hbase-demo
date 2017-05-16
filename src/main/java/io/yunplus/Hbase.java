@@ -310,7 +310,7 @@ public class Hbase {
         // 创建表
         String tableName = "blog2";
         String[] family = { "article", "author" };
-        // creatTable(tableName, family);
+        creatTable(tableName, family);
 
         // 为表添加数据
 
