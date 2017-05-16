@@ -32,7 +32,7 @@ public class Hbase {
      * 
      * @family 列族列表
      */
-    public static void creatTable(String tableName, String[] family)
+    public static boolean creatTable(String tableName, String[] family)
             throws Exception {
         HBaseAdmin admin = new HBaseAdmin(conf);
         HTableDescriptor desc = new HTableDescriptor(tableName);
@@ -41,10 +41,11 @@ public class Hbase {
         }
         if (admin.tableExists(tableName)) {
             System.out.println("table Exists!");
-            System.exit(0);
+            return false;
         } else {
             admin.createTable(desc);
             System.out.println("create table Success!");
+            return true;
         }
     }
 
@@ -300,9 +301,11 @@ public class Hbase {
      */
     public static void deleteTable(String tableName) throws IOException {
         HBaseAdmin admin = new HBaseAdmin(conf);
-        admin.disableTable(tableName);
-        admin.deleteTable(tableName);
-        System.out.println(tableName + "is deleted!");
+        if (admin.tableExists(tableName)) {
+            admin.disableTable(tableName);
+            admin.deleteTable(tableName);
+            System.out.println(tableName + "is deleted!");
+        }
     }
 
     public static void main(String[] args) throws Exception {
@@ -310,7 +313,10 @@ public class Hbase {
         String tableName = "logs";
         long start = System.currentTimeMillis();
         String[] family = { "action", "user" };
-        creatTable(tableName, family);
+        deleteTable(tableName);
+        if(creatTable(tableName, family)){
+            //TODO
+        };
         System.out.println("Create Table!");
         String[] column1 = { "tag", "at" };
         String[] column2 = { "name" };
