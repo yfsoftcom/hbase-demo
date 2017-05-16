@@ -308,6 +308,7 @@ public class Hbase {
     public static void main(String[] args) throws Exception {
         // 创建表
         String tableName = "logs";
+        long now = System.currentTimeMillis();
         String[] family = { "action", "user" };
         creatTable(tableName, family);
         System.out.println("Create Table!");
@@ -315,7 +316,7 @@ public class Hbase {
         String[] column1 = { "tag", "at" };
         String[] value1 = {
                 "login",
-                System.currenttimemillis()};
+                now};
         String[] column2 = { "name" };
         String[] value2 = { "tester"};
 
