@@ -319,7 +319,7 @@ public class Hbase {
         long max = Long.parseLong(args[0]);
         System.out.println("Counter: " + max);
         for(long i = 10 ; i < max ; i++){
-            addData("rowkey" + i, tableName, column1, { "login", "No:" + i }, column2, { "tester-" + i});
+            addData("rowkey" + i, tableName, column1, new String[]{ "login", "No:" + i }, column2, new String[]{ "tester-" + i});
         }
         
         System.out.println("Finish @ " + System.currentTimeMillis());
