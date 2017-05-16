@@ -89,7 +89,6 @@ public class Hbase {
             }
         }
         table.put(put);
-        System.out.println("add data Success!");
     }
 
     /*
