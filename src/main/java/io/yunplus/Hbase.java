@@ -64,7 +64,7 @@ public class Hbase {
      * @value2 第二个列的值的列表
      */
     public static void addData(String rowKey, String tableName,
-            String[] column1, String[] value1, String[] column2, String[] value2)
+            String[] column1, Object[] value1, String[] column2, Object[] value2)
             throws IOException {
         Put put = new Put(Bytes.toBytes(rowKey));// 设置rowkey
         HTable table = new HTable(conf, Bytes.toBytes(tableName));// HTabel负责跟记录相关的操作如增删改查等//
@@ -314,11 +314,11 @@ public class Hbase {
         System.out.println("Create Table!");
 
         String[] column1 = { "tag", "at" };
-        String[] value1 = {
+        Object[] value1 = {
                 "login",
                 now};
         String[] column2 = { "name" };
-        String[] value2 = { "tester"};
+        Object[] value2 = { "tester"};
 
         addData("rowkey1", "logs", column1, value1, column2, value2);
         
