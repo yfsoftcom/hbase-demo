@@ -22,7 +22,7 @@ public class Hbase {
     static Configuration conf = null;
     static {
         conf = HBaseConfiguration.create();
-        conf.set("hbase.zookeeper.quorum", "10.11.116.169");
+        conf.set("hbase.zookeeper.quorum", "localhost");
     }
 
     /*
