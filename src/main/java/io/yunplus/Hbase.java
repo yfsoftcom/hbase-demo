@@ -312,7 +312,7 @@ public class Hbase {
         String tableName = "logs";
         long start = System.currentTimeMillis();
         String[] family = { "action", "user" };
-        deleteTable(tableName);
+        // deleteTable(tableName);
         if(creatTable(tableName, family)){
             //TODO
         };
