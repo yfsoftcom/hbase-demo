@@ -40,11 +40,9 @@ public class Hbase {
             desc.addFamily(new HColumnDescriptor(family[i]));
         }
         if (admin.tableExists(tableName)) {
-            System.out.println("table Exists!");
             return false;
         } else {
             admin.createTable(desc);
-            System.out.println("create table Success!");
             return true;
         }
     }
@@ -221,7 +219,6 @@ public class Hbase {
         put.add(Bytes.toBytes(familyName), Bytes.toBytes(columnName),
                 Bytes.toBytes(value));
         table.put(put);
-        System.out.println("update table Success!");
     }
 
     /*
@@ -248,7 +245,6 @@ public class Hbase {
                     .println("qualifier:" + Bytes.toString(kv.getQualifier()));
             System.out.println("value:" + Bytes.toString(kv.getValue()));
             System.out.println("Timestamp:" + kv.getTimestamp());
-            System.out.println("-------------------------------------------");
         }
         /*
          * List<?> results = table.get(get).list(); Iterator<?> it =
